@@ -18,20 +18,22 @@
       rel="stylesheet"
     />
     <style>
-      /* Reset */
+      /* Reset some basic styling */
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
 
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #000;
-        color: white;
+      /* Full Page Layout */
+      body,
+      html {
+        height: 100%;
+        font-family: "Segoe UI", sans-serif;
+        background-color: #121212;
+        color: #e0e0e0;
         display: flex;
         flex-direction: column;
-        height: 100vh;
       }
 
       header {
@@ -40,6 +42,7 @@
         text-align: center;
       }
 
+      /* Banner */
       .banner {
         background-image: url("https://th.bing.com/th/id/OIP.c0JLxqUl5L8qEQbJm1KexAHaEc?w=1200&h=720&rs=1&pid=ImgDetMain");
         background-size: cover;
@@ -52,16 +55,16 @@
       }
 
       .banner h1 {
-        font-size: 42px;
-        margin-bottom: 10px;
+        font-size: 85px;
         color: #ffa200;
         text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black,
           2px 2px 0 black, 0px 0px 3px black;
       }
 
       .banner h2 {
-        font-size: 24px;
+        font-size: 20px;
         color: white;
+        margin-bottom: 20px;
         text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black,
           2px 2px 0 black, 0px 0px 3px black;
       }
@@ -120,40 +123,20 @@
         background-color: #cc8400;
       }
 
+      /* Footer */
       footer {
         background-color: #1c1c1c;
         color: white;
         text-align: center;
         padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
       }
 
       footer p {
-        margin: 10px 0;
-      }
-
-      footer a {
-        color: #ffa200;
-        text-decoration: none;
-      }
-
-      footer a:hover {
-        color: white;
-      }
-
-      .social-links {
-        margin-top: 15px;
-      }
-
-      .social-links a {
-        display: inline-block;
-        margin: 0 10px;
-        color: #ffa200;
-        font-size: 24px;
-        transition: color 0.3s ease;
-      }
-
-      .social-links a:hover {
-        color: white;
+        margin: 10px;
       }
 
       @media (max-width: 600px) {
@@ -176,7 +159,7 @@
     <header>
       <div class="banner">
         <h1>ICOFFCL</h1>
-        <h2>Indunil Chathuranga Official</h2>
+        <h2>INDUNIL CHATHURANGA OFFICIAL</h2>
       </div>
     </header>
 
@@ -194,31 +177,9 @@
 
     <footer>
       <p>
-        © <span id="currentYear"></span> Indunil Chathuranga (ICOFFCL). All
-        rights reserved.
+        © <span id="currentYear"></span> Indunil Chathuranga. All rights
+        reserved.
       </p>
-      <p>
-        <i class="fab fa-whatsapp"></i>
-        <a href="https://wa.me/94741688487" target="_blank">+94 741688487</a>
-        (Business Inquiries Only)
-      </p>
-      <div class="social-links">
-        <a href="https://www.youtube.com/@icoffcl" target="_blank"
-          ><i class="fab fa-youtube"></i
-        ></a>
-        <a href="https://www.facebook.com/icoffcl" target="_blank"
-          ><i class="fab fa-facebook"></i
-        ></a>
-        <a href="https://www.tiktok.com/@icoffcl" target="_blank"
-          ><i class="fab fa-tiktok"></i
-        ></a>
-        <a href="https://audiomack.com/icoffcl" target="_blank"
-          ><i class="fas fa-music"></i
-        ></a>
-        <a href="mailto:indunilchathurangaofficial@gmail.com"
-          ><i class="fas fa-envelope"></i
-        ></a>
-      </div>
     </footer>
 
     <script src="script.js"></script>
