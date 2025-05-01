@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 - Page Not Found | ICOFFCL</title>
+    <link
+      rel="icon"
+      href="https://i.ibb.co/SXxWmZZ/Photoroom-20240810-231545.png"
+      type="image/png"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="https://i.ibb.co/SXxWmZZ/Photoroom-20240810-231545.png"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #000;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+      }
+
+      header {
+        background-color: #171717;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .banner {
+        background-image: url("https://th.bing.com/th/id/OIP.c0JLxqUl5L8qEQbJm1KexAHaEc?w=1200&h=720&rs=1&pid=ImgDetMain");
+        background-size: cover;
+        background-position: center;
+        padding: 50px 20px;
+        text-align: center;
+        color: white;
+        border-radius: 8px;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+      }
+
+      .banner h1 {
+        font-size: 42px;
+        margin-bottom: 10px;
+        color: #ffa200;
+        text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black,
+          2px 2px 0 black, 0px 0px 3px black;
+      }
+
+      .banner h2 {
+        font-size: 24px;
+        color: white;
+        text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black,
+          2px 2px 0 black, 0px 0px 3px black;
+      }
+
+      main {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 20px;
+        text-align: center;
+      }
+
+      .error-container {
+        max-width: 600px;
+      }
+
+      .error-code {
+        font-size: 120px;
+        font-weight: bold;
+        color: #ffa200;
+        margin-bottom: 20px;
+        animation: pulse 1.5s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          text-shadow: 0 0 10px #ffa200;
+        }
+        50% {
+          text-shadow: 0 0 25px #ffa200, 0 0 50px #ffa200;
+        }
+        100% {
+          text-shadow: 0 0 10px #ffa200;
+        }
+      }
+
+      .error-message {
+        font-size: 22px;
+        color: #ddd;
+        margin-bottom: 30px;
+      }
+
+      .home-link {
+        display: inline-block;
+        background-color: #ffa200;
+        color: #000;
+        text-decoration: none;
+        padding: 12px 24px;
+        font-weight: bold;
+        border-radius: 5px;
+        transition: background 0.3s;
+      }
+
+      .home-link:hover {
+        background-color: #cc8400;
+      }
+
+      footer {
+        background-color: #1c1c1c;
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+
+      footer p {
+        margin: 10px 0;
+      }
+
+      footer a {
+        color: #ffa200;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        color: white;
+      }
+
+      .social-links {
+        margin-top: 15px;
+      }
+
+      .social-links a {
+        display: inline-block;
+        margin: 0 10px;
+        color: #ffa200;
+        font-size: 24px;
+        transition: color 0.3s ease;
+      }
+
+      .social-links a:hover {
+        color: white;
+      }
+
+      @media (max-width: 600px) {
+        .error-code {
+          font-size: 80px;
+        }
+
+        .error-message {
+          font-size: 18px;
+        }
+
+        .home-link {
+          font-size: 16px;
+          padding: 10px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="banner">
+        <h1>ICOFFCL</h1>
+        <h2>Indunil Chathuranga Official</h2>
+      </div>
+    </header>
+
+    <main>
+      <div class="error-container">
+        <div class="error-code">404</div>
+        <div class="error-message">
+          Oops! The page you're looking for doesn't exist.
+        </div>
+        <a href="/" class="home-link"
+          ><i class="fas fa-home"></i> Back to Home</a
+        >
+      </div>
+    </main>
+
+    <footer>
+      <p>
+        © <span id="currentYear"></span> Indunil Chathuranga (ICOFFCL). All
+        rights reserved.
+      </p>
+      <p>
+        <i class="fab fa-whatsapp"></i>
+        <a href="https://wa.me/94741688487" target="_blank">+94 741688487</a>
+        (Business Inquiries Only)
+      </p>
+      <div class="social-links">
+        <a href="https://www.youtube.com/@icoffcl" target="_blank"
+          ><i class="fab fa-youtube"></i
+        ></a>
+        <a href="https://www.facebook.com/icoffcl" target="_blank"
+          ><i class="fab fa-facebook"></i
+        ></a>
+        <a href="https://www.tiktok.com/@icoffcl" target="_blank"
+          ><i class="fab fa-tiktok"></i
+        ></a>
+        <a href="https://audiomack.com/icoffcl" target="_blank"
+          ><i class="fas fa-music"></i
+        ></a>
+        <a href="mailto:indunilchathurangaofficial@gmail.com"
+          ><i class="fas fa-envelope"></i
+        ></a>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+      document.getElementById("currentYear").textContent =
+        new Date().getFullYear();
+    </script>
+  </body>
+</html>

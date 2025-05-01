@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ICOFFCL - Indunil Chathuranga Official</title>
+    <link
+      rel="icon"
+      href="https://i.ibb.co/SXxWmZZ/Photoroom-20240810-231545.png"
+      type="image/png"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="https://i.ibb.co/SXxWmZZ/Photoroom-20240810-231545.png"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Reset and Global Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        color: white;
+        background-color: #000;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      header {
+        background-color: #171717;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .banner {
+        background-image: url("https://th.bing.com/th/id/OIP.c0JLxqUl5L8qEQbJm1KexAHaEc?w=1200&h=720&rs=1&pid=ImgDetMain");
+        background-size: cover;
+        background-position: center;
+        padding: 50px 20px;
+        text-align: center;
+        color: white;
+        border-radius: 8px;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+      }
+
+      .banner h1 {
+        font-size: 42px;
+        margin-bottom: 10px;
+        color: #ffa200;
+        text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black,
+          2px 2px 0 black, 0px 0px 3px black; /* Slight glow/blur */
+      }
+
+      .banner h2 {
+        font-size: 24px;
+        color: white;
+        text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black,
+          2px 2px 0 black, 0px 0px 3px black; /* Slight glow/blur */
+      }
+
+      /* Navigation Menu Styles */
+      nav {
+        background-color: #171717;
+        padding: 15px;
+        display: flex;
+        justify-content: center;
+        border-bottom: 1px solid #ffa200;
+      }
+
+      nav a {
+        color: #fff;
+        font-size: 18px;
+        margin: 0 20px;
+        text-decoration: none;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      nav a:hover {
+        color: #ffa200;
+      }
+
+      /* Profile Info Styles */
+      .profile-info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #171717;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .profile-info img {
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        margin-right: 20px;
+      }
+
+      .profile-info h3 {
+        font-size: 28px;
+        color: #ffa200;
+        margin-bottom: 10px;
+      }
+
+      .profile-info p {
+        font-size: 16px;
+        color: #ddd;
+        text-align: justify;
+        line-height: 1.6;
+      }
+
+      /* Card Styles */
+      .card-link {
+        text-decoration: none;
+      }
+
+      .cards-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin: 20px;
+      }
+
+      .card {
+        background-color: #171717;
+        border-radius: 8px;
+        overflow: hidden;
+        width: 300px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+      }
+
+      .card img {
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .card-content {
+        padding: 15px;
+      }
+
+      .card-title {
+        font-size: 18px;
+        font-weight: bold;
+        color: #ffa200;
+        margin-bottom: 10px;
+      }
+
+      .card-text {
+        font-size: 14px;
+        color: #ddd;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+      }
+
+      /* Footer Styles */
+      footer {
+        background-color: #1c1c1c;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        margin-top: 20px;
+      }
+
+      footer a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      /* Live Player Styles */
+      .radio-player {
+        text-align: center;
+        background-color: #171717;
+        padding: 20px;
+        margin: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .controls button {
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: #ffa200;
+        margin: 10px 10px;
+      }
+
+      .progress-bar {
+        background-color: #f0f0f0;
+        height: 5px;
+        border-radius: 5px;
+        width: 100%;
+        margin: 10px 0;
+      }
+
+      .progress-bar span {
+        background-color: #ffa200;
+        display: block;
+        height: 100%;
+        width: 0%;
+      }
+
+      .visualizer-bar {
+        height: 4px;
+        background-color: #ffa200;
+        width: 0;
+        transition: width 0.2s ease;
+      }
+      .live-dot {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background-color: red;
+        border-radius: 50%;
+        margin-left: 5px;
+      }
+
+      footer {
+        background-color: #1c1c1c;
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+
+      footer p {
+        margin: 10px;
+      }
+
+      footer a {
+        color: #ffa200;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        color: white;
+      }
+
+      footer .social-links {
+        margin-top: 15px;
+      }
+
+      footer .social-links a {
+        display: inline-block;
+        margin: 0 10px;
+        color: #ffa200;
+        font-size: 24px;
+        transition: color 0.3s ease;
+      }
+
+      footer .social-links a:hover {
+        color: white;
+      }
+
+      @media (max-width: 768px) {
+        .cards-container {
+          justify-content: center; /* Changed from flex-start */
+        }
+
+        .card {
+          width: 90%;
+          max-width: 400px;
+          margin: 0 auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="banner">
+        <h1>ICOFFCL</h1>
+        <h2>Indunil Chathuranga Official</h2>
+      </div>
+    </header>
+
+    <div class="profile-info">
+      <img
+        src="https://assets.audiomack.com/icoffcl/dbd11cf047bc3410d12a84d60fd79a0e7bfb364f866b0534b17175f6de9c9369.jpeg?width=400"
+        alt="Indunil Chathuranga"
+      />
+      <div>
+        <h3>Indunil Chathuranga</h3>
+        <p>
+          <strong>Indunil Chathuranga</strong> is a dynamic multi-talented
+          artist — <span class="role">Actor</span>,
+          <span class="role">Singer</span>, <span class="role">Writer</span>,
+          and <span class="role">Director</span>. He is also the founder of
+          <strong>ICOFFCL</strong>, a modern creative agency specializing in
+          broadcasting and multi-functional services.
+        </p>
+        <p>
+          <strong>ICOFFCL</strong> delivers professional solutions in audio,
+          video, photography, logo design, typesetting, and more — empowering
+          artists and businesses with innovative content and media production.
+        </p>
+      </div>
+    </div>
+
+    <div class="radio-player">
+      <h3 class="broadcast-info">
+        Live Broadcast for
+        <span id="correctdate" class="broadcast-date"></span>
+        at <span id="correctlocaltime" class="broadcast-time"></span>
+      </h3>
+      <div class="controls">
+        <button id="playPauseBtn" onclick="togglePlay()">
+          <i class="fas fa-play"></i>
+        </button>
+        <div class="status">
+          <span class="progress-bar" id="progressBar">
+            <span></span>
+          </span>
+          <span id="currentTime">00:00</span> <span id="liveStatus">Live</span>
+          <span id="liveDot" class="live-dot"></span>
+          <span id="bufferingStatus" style="display: none">Buffering...</span>
+        </div>
+      </div>
+
+      <span class="progress-bar" id="progressBar">
+        <span></span>
+      </span>
+
+      <div class="visualizer">
+        <div id="visualizerBar" class="visualizer-bar"></div>
+      </div>
+
+      <div id="statusMessage"></div>
+    </div>
+
+    <main>
+      <div class="cards-container">
+        <a href="" class="card-link">
+          <div class="card">
+            <img
+              src="https://assets.audiomack.com/icoffcl/888602aa27fdc4fdbea033e322bf75ecde263a9e1ea44c9cf99c93cdc796a9cc.jpeg?width=600"
+              alt="Post Image"
+            />
+            <div class="card-content">
+              <h3 class="card-title">Avihinsaka Premaya</h3>
+              <p class="card-text">
+                By Indunil Chathuranga <br />Release Date - 2025.05.12
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </main>
+
+    <footer>
+      <p>
+        © <span id="currentYear"></span> Indunil Chathuranga (ICOFFCL). All
+        rights reserved.
+      </p>
+      <p>
+        <i class="fab fa-whatsapp"></i>
+        <a href="https://wa.me/94741688487" target="_blank">+94 741688487</a>
+        (Business Inquiries Only)
+      </p>
+      <div class="social-links">
+        <a href="https://www.youtube.com/@icoffcl" target="_blank"
+          ><i class="fab fa-youtube"></i
+        ></a>
+        <a href="https://www.facebook.com/icoffcl" target="_blank"
+          ><i class="fab fa-facebook"></i
+        ></a>
+        <a href="https://www.tiktok.com/@icoffcl" target="_blank"
+          ><i class="fab fa-tiktok"></i
+        ></a>
+        <a href="https://audiomack.com/icoffcl" target="_blank"
+          ><i class="fas fa-music"></i
+        ></a>
+        <a href="mailto:indunilchathurangaofficial@gmail.com"
+          ><i class="fas fa-envelope"></i
+        ></a>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+      const audioPlayer = new Audio("https://stream.zeno.fm/eownpnzhffvtv");
+      audioPlayer.crossOrigin = "anonymous"; // prevent potential CORS errors
+      const playPauseBtn = document.getElementById("playPauseBtn");
+      const currentTimeElement = document.getElementById("currentTime");
+      const progressBar = document.querySelector("#progressBar span");
+      const liveStatus = document.getElementById("liveStatus");
+      const bufferingStatus = document.getElementById("bufferingStatus");
+      const visualizerBar = document.getElementById("visualizerBar");
+      const liveDot = document.getElementById("liveDot");
+
+      const statusMsg = document.createElement("div");
+      statusMsg.id = "statusMessage";
+      document.querySelector(".radio-player").appendChild(statusMsg);
+
+      let isPlaying = false;
+      let retryTimeout;
+
+      function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${minutes < 10 ? "0" : ""}${minutes}:${
+          secs < 10 ? "0" : ""
+        }${secs}`;
+      }
+
+      function updateProgress() {
+        const currentTime = audioPlayer.currentTime;
+        const duration = audioPlayer.duration || 1;
+        currentTimeElement.textContent = formatTime(currentTime);
+        const progress = (currentTime / duration) * 100;
+        progressBar.style.width = `${progress}%`;
+        visualizerBar.style.width = `${progress}%`;
+      }
+
+      function togglePlay() {
+        if (isPlaying) {
+          audioPlayer.pause();
+          playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        } else {
+          audioPlayer.play();
+          playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        }
+        isPlaying = !isPlaying;
+      }
+
+      audioPlayer.addEventListener("play", () => {
+        liveStatus.textContent = "Live";
+        liveDot.style.display = "inline-block";
+      });
+
+      audioPlayer.addEventListener("pause", () => {
+        liveStatus.textContent = "Paused";
+        liveDot.style.display = "none";
+      });
+
+      audioPlayer.addEventListener("waiting", () => {
+        bufferingStatus.style.display = "inline";
+      });
+
+      audioPlayer.addEventListener("playing", () => {
+        bufferingStatus.style.display = "none";
+      });
+
+      setInterval(updateProgress, 1000);
+
+      // Live update timestamp and year
+      const correctDate = document.getElementById("correctdate");
+      const correctLocalTime = document.getElementById("correctlocaltime");
+      const currentYear = document.getElementById("currentYear");
+
+      const updateTimestamp = () => {
+        const now = new Date();
+
+        // Format: "2025 May 01"
+        const months = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+        ];
+        const year = now.getFullYear();
+        const month = months[now.getMonth()];
+        const day = String(now.getDate()).padStart(2, "0");
+        correctDate.textContent = `${year} ${month} ${day}`;
+
+        correctLocalTime.textContent = now.toLocaleTimeString();
+        currentYear.textContent = year;
+      };
+
+      setInterval(updateTimestamp, 1000); // Update every second
+
+      window.onload = () => {
+        updateTimestamp();
+        if (audioPlayer.paused) {
+          playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        } else {
+          playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        }
+      };
+    </script>
+  </body>
+</html>
