@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Avihinsaka Premaya | ICOFFCL</title>
+    <link
+      rel="icon"
+      href="https://i.ibb.co/SXxWmZZ/Photoroom-20240810-231545.png"
+      type="image/png"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="https://i.ibb.co/SXxWmZZ/Photoroom-20240810-231545.png"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      main h3 {
+        color: #ffa200;
+        text-align: center;
+        padding-bottom: 10px;
+        margin-top: 40px;
+        font-size: 28px;
+        text-decoration: underline;
+      }
+
+      main h4 {
+        text-align: center;
+        color: #ffa200;
+        font-size: 24px;
+      }
+
+      main p {
+        font-size: 22px;
+        text-align: justify;
+      }
+
+      main p:last-child {
+        margin-bottom: 0;
+      }
+
+      main br {
+        display: block;
+        margin-top: 10px;
+      }
+
+      main .centered-image {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+      }
+
+      main .centered-image img {
+        max-width: 100%;
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        border-radius: 8px;
+        border: 1px solid #333;
+      }
+      main iframe {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="nav"></div>
+    <main></main>
+    <div id="footer"></div>
+    <script src="../script.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", async () => {
+        try {
+          // Fetch the main HTML file (index.html) to copy elements
+          const res = await fetch("../index.html"); // Adjust path if necessary
+          if (!res.ok) {
+            throw new Error("Failed to load index.html");
+          }
+
+          const html = await res.text();
+          const doc = new DOMParser().parseFromString(html, "text/html");
+
+          // Insert the nav and footer content from index.html
+          const targets = [
+            { selector: "nav", id: "nav" },
+            { selector: "footer", id: "footer" },
+          ];
+
+          targets.forEach(({ selector, id }) => {
+            const source = doc.querySelector(selector);
+            const target = document.getElementById(id);
+            if (source && target) target.innerHTML = source.outerHTML;
+          });
+
+          // Automatically add <link> elements from index.html to this page
+          const linkElements = doc.querySelectorAll("link");
+          linkElements.forEach((element) => {
+            // Clone each <link> element and append it to the head
+            const clone = element.cloneNode(true);
+            document.head.appendChild(clone);
+          });
+
+          // Automatically add <script> elements from index.html to this page
+          const scriptElements = doc.querySelectorAll("script");
+          scriptElements.forEach((element) => {
+            if (element.src) {
+              // For external scripts, create a new script tag with the src attribute
+              const script = document.createElement("script");
+              script.src = element.src;
+              script.onload = () => {
+                console.log(`Script ${script.src} loaded successfully`);
+              };
+              document.body.appendChild(script);
+            } else {
+              // For inline scripts, we evaluate the innerHTML (the JavaScript code)
+              const inlineScript = document.createElement("script");
+              inlineScript.innerHTML = element.innerHTML;
+              document.body.appendChild(inlineScript);
+            }
+          });
+        } catch (err) {
+          console.error("Error loading and copying content:", err);
+        }
+      });
+    </script>
+  </body>
+</html>
