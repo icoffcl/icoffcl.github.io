@@ -13,7 +13,7 @@
       rel="apple-touch-icon"
       href="https://i.ibb.co/SXxWmZZ/Photoroom-20240810-231545.png"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="../styles.css" />
     <style>
       .error-container {
         max-width: 600px;
@@ -65,12 +65,13 @@
     </main>
     <div id="footer"></div>
 
-    <script src="script.js"></script>
+    <script src="../script.js"></script>
+
     <script>
       document.addEventListener("DOMContentLoaded", async () => {
         try {
           // Fetch the main HTML file (index.html) to copy elements
-          const res = await fetch("/index.html"); // Adjust path if necessary
+          const res = await fetch("../"); // Adjust path if necessary
           if (!res.ok) {
             throw new Error("Failed to load index.html");
           }
