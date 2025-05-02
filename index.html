@@ -166,6 +166,26 @@
         const newUrl = newPath + search + hash;
         history.replaceState(null, "", newUrl);
       }
+
+      // Function to remove file extension from the URL
+      function removeFileExtension() {
+        // Get the current URL
+        let currentUrl = window.location.href;
+
+        // Regular expression to remove common file extensions (.html, .css, .js, .php, .png, .jpg, .jpeg, .gif, .mp3, .mp4, .svg, etc.)
+        let newUrl = currentUrl.replace(
+          /\.(html|css|js|php|png|jpg|jpeg|gif|mp3|mp4|svg|txt|json|xml)$/i,
+          ""
+        );
+
+        // If the URL has been changed, update the browser's address bar
+        if (currentUrl !== newUrl) {
+          window.history.replaceState(null, null, newUrl);
+        }
+      }
+
+      // Call the function to remove the file extension
+      removeFileExtension();
     </script>
 
     <script>
