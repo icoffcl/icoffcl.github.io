@@ -7,266 +7,66 @@
     <link
       rel="icon"
       href="https://i.ibb.co/SXxWmZZ/Photoroom-20240810-231545.png"
-      type="image/png"
     />
     <link
-      rel="apple-touch-icon"
-      href="https://i.ibb.co/SXxWmZZ/Photoroom-20240810-231545.png"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-
-    <style>
-      /* Reset some basic styling */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      /* Full Page Layout */
-      body,
-      html {
-        height: 100%;
-        font-family: "Segoe UI", sans-serif;
-        background-color: #121212;
-        color: #e0e0e0;
-        display: flex;
-        flex-direction: column;
-      }
-
-      header {
-        background-color: #171717;
-        padding: 20px;
-        text-align: center;
-      }
-
-      /* Banner */
-      .banner {
-        background-image: url("https://th.bing.com/th/id/OIP.c0JLxqUl5L8qEQbJm1KexAHaEc?w=1200&h=720&rs=1&pid=ImgDetMain");
-        background-size: cover;
-        background-position: center;
-        padding: 50px 20px;
-        text-align: center;
-        color: white;
-        border-radius: 8px;
-        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
-      }
-
-      .banner h1 {
-        font-size: 85px;
-        color: #ffa200;
-        text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black,
-          2px 2px 0 black, 0px 0px 3px black;
-      }
-
-      .banner h2 {
-        font-size: 20px;
-        color: white;
-        margin-bottom: 20px;
-        text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black,
-          2px 2px 0 black, 0px 0px 3px black;
-      }
-
-      .social-links {
-        background-color: #171717;
-        border-radius: 10px;
-        max-width: 800px;
-        width: 420px;
-        margin: 25px auto auto auto;
-        padding: 20px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        text-align: center;
-        color: yellow;
-      }
-
-      .social-links a {
-        display: inline-block;
-        margin: 10px 15px;
-        color: greenyellow; /* Red color for icons */
-        font-size: 24px;
-        transition: color 0.3s ease;
-      }
-
-      .social-links a:hover {
-        color: white;
-      }
-
-      /* Profile Info Section */
-      .profile-info {
-        max-width: 800px;
-        margin: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 30px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-
-      .profile-info h3 {
-        font-size: 28px;
-        color: #ffa200;
-        margin-bottom: 10px;
-      }
-
-      .profile-info p {
-        font-size: 16px;
-        color: #ddd;
-        text-align: justify;
-        line-height: 1.6;
-      }
-
-      .role {
-        color: #ffa200;
-      }
-
-      main {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        max-width: 800px;
-        margin: auto;
-      }
-
-      /* Cards Section */
-      .cards-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-        margin: 40px 20px;
-      }
-
-      .card-link {
-        text-decoration: none;
-      }
-
-      .card {
-        background-color: #171717;
-        border-radius: 10px;
-        width: 300px;
-        overflow: hidden;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        transition: transform 0.3s ease;
-      }
-
-      .card:hover {
-        transform: translateY(-5px);
-      }
-
-      .card img {
-        width: 100%;
-        object-fit: cover;
-      }
-
-      .card-content {
-        padding: 15px;
-      }
-
-      .card-title {
-        color: #ffa200;
-        font-size: 18px;
-        font-weight: bold;
-      }
-
-      .card-text {
-        color: #ddd;
-        font-size: 14px;
-        line-height: 1.5;
-      }
-
-      /* Live Radio Player */
-      .radio-player {
-        background-color: #171717;
-        border-radius: 10px;
-        max-width: 800px;
-        width: 420px;
-        margin: auto;
-        padding: 30px 20px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        text-align: center;
-      }
-
-      .radio-player i {
-        color: #ffa200;
-        font-size: 25px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-      }
-
-      .radio-player span {
-        padding: 10px;
-      }
-
-      .live-status {
-        margin-top: 15px;
-        font-weight: bold;
-      }
-
-      /* Footer */
-      footer {
-        background-color: #1c1c1c;
-        color: white;
-        text-align: center;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      }
-
-      footer p {
-        margin: 10px;
-      }
-
-      /* Responsive Design */
-      @media (max-width: 800px) {
-        .cards-container {
-          justify-content: center; /* Changed from flex-start */
-        }
-
-        .card {
-          width: 90%;
-          max-width: 400px;
-          margin: 0 auto;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="styles.css" />
+    <style></style>
   </head>
   <body>
-    <header>
-      <div class="banner">
-        <h1>ICOFFCL</h1>
-        <h2>INDUNIL CHATHURANGA OFFICIAL</h2>
+    <nav>
+      <div class="nav-container">
+        <a href="index.html"
+          ><div class="nav-logo"><b>ICOFFCL</b></div></a
+        >
+        <div class="radio-player">
+          <span id="playPauseBtn" onclick="toggleRadio()">
+            <i class="fas fa-play"></i>
+          </span>
+          <div class="live-status" id="liveStatus">
+            <div class="dot"></div>
+            Radio Broadcast
+          </div>
+          <div class="live-timer" id="liveTimer">00:00</div>
+        </div>
+        <div class="dropdown">
+          <button class="dropbtn"><i class="fas fa-bars"></i></button>
+          <div class="dropdown-content">
+            <a href="../index.html"><i class="fas fa-home"></i> Home</a>
+            <li>
+              <a href="#audio"><i class="fas fa-music"></i> Audio</a>
+            </li>
+            <li>
+              <a href="#video"><i class="fas fa-video"></i> Video</a>
+            </li>
+            <li>
+              <a href="#photo"><i class="fas fa-photo-video"></i> Photos</a>
+            </li>
+            <li>
+              <a href="#story"><i class="fas fa-book"></i> Story</a>
+            </li>
+            <li>
+              <a href="#services"><i class="fas fa-cogs"></i> Services</a>
+            </li>
+          </div>
+        </div>
       </div>
-    </header>
+    </nav>
 
-    <!-- Profile Info Section -->
-    <div class="profile-info">
-      <div>
-        <h3>Indunil Chathuranga</h3>
-        <p>
-          <strong>Indunil Chathuranga</strong> is a dynamic multi-talented
-          artist — <span class="role">Actor</span>,
-          <span class="role">Singer</span>, <span class="role">Writer</span>,
-          and <span class="role">Director</span>. He is also the founder of
-          <strong>ICOFFCL</strong>, a modern creative agency specializing in
-          broadcasting and multi-functional services.
-        </p>
-        <br />
-        <p>
-          <strong>ICOFFCL</strong> delivers professional solutions in audio,
-          video, photography, logo design, typesetting, and more — empowering
-          artists and businesses with innovative content and media production.
-        </p>
+    <header>
+      <img
+        src="https://th.bing.com/th/id/OIP.c0JLxqUl5L8qEQbJm1KexAHaEc?w=1200&h=720&rs=1&pid=ImgDetMain"
+        class="cover-photo"
+      />
+      <div class="profile-section">
+        <img
+          src="https://assets.audiomack.com/icoffcl/dbd11cf047bc3410d12a84d60fd79a0e7bfb364f866b0534b17175f6de9c9369.jpeg?width=400"
+          class="profile-pic"
+        />
+        <div class="profile-name">Indunil Chathuranga</div>
         <div class="social-links">
-          <span>
-            <i class="fab fa-whatsapp"></i> +94 741688487 (Business Inquiries
-            Only) </span
-          ><br />
           <a href="https://www.youtube.com/@icoffcl" target="_blank"
             ><i class="fab fa-youtube"></i
           ></a>
@@ -277,39 +77,62 @@
             ><i class="fab fa-tiktok"></i
           ></a>
           <a href="https://audiomack.com/icoffcl" target="_blank"
-            ><i class="fas fa-music"></i
-          ></a>
-          <a href="mailto:indunilchathurangaofficial@gmail.com"
-            ><i class="fas fa-envelope"></i
+            ><i class="fas fa-music"></i></a
+          ><a href="https://www.twitch.tv/icoffcl" target="_blank"
+            ><i class="fab fa-twitch"></i
           ></a>
         </div>
       </div>
-    </div>
+      <div class="discription">
+        <p>
+          <strong>Indunil Chathuranga</strong> is a talented and versatile Sri
+          Lankan artist. Beyond his artistic pursuits, he is the founder of
+          <strong>ICOFFCL</strong>, a forward-thinking creative agency that
+          specializes in broadcasting and multi-functional services.
+        </p>
+        <br />
+        <p>
+          ICOFFCL is committed to delivering innovative solutions to the media
+          industry, adapting to the ever-evolving demands of the digital age.
+          The agency offers a diverse range of services, including audio and
+          video content creation, photography, editing, logo design, and
+          typesetting, providing high-quality media solutions tailored to
+          today’s needs.
+        </p>
 
-    <!-- Live Radio Player -->
-    <div class="radio-player">
-      <h2>
-        <span id="playPauseBtn" onclick="toggleRadio()">
-          <i class="fas fa-play"></i>
-        </span>
-        Radio Broadcast
-        <span class="live-status" id="liveStatus">( Paused )</span>
-      </h2>
-    </div>
+        <div class="contact-info" style="margin-top: 20px">
+          <p><strong>Contact for Business Inquiries:</strong></p>
+          <p>
+            <a
+              href="https://wa.me/94741688487"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fab fa-whatsapp"></i> +94 741 688 487 </a
+            ><br />
+            <a href="mailto:indunilchathurangaofficial@gmail.com">
+              <i class="fas fa-envelope"></i>
+              indunilchathurangaofficial@gmail.com
+            </a>
+          </p>
+        </div>
+      </div>
+    </header>
 
     <main>
-      <div class="cards-container">
-        <a href="avihinsaka-premaya/" class="card-link">
+      <div class="main-content">
+        <!-- Post 1 -->
+        <a href="../avihinsaka-premaya/">
           <div class="card">
             <img
               src="https://assets.audiomack.com/icoffcl/888602aa27fdc4fdbea033e322bf75ecde263a9e1ea44c9cf99c93cdc796a9cc.jpeg?width=600"
-              alt="Post Image"
             />
             <div class="card-content">
-              <h3 class="card-title">Avihinsaka Premaya</h3>
-              <p class="card-text">
-                By Indunil Chathuranga <br />Release Date - 2025.05.12
-              </p>
+              <div class="card-title">Avihinsaka Premaya</div>
+              <div class="card-text">
+                <i class="fas fa-user"></i> Indunil Chathuranga<br />
+                <i class="fas fa-calendar-alt"></i> 2025.05.12 | 04:00 PM
+              </div>
             </div>
           </div>
         </a>
@@ -317,48 +140,207 @@
     </main>
 
     <footer>
-      <p>
-        © <span id="currentYear"></span> Indunil Chathuranga. All rights
-        reserved.
-      </p>
+      © <span id="currentYear"></span> Indunil Chathuranga. All rights reserved.
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Set current year
+        const yearEl = document.getElementById("currentYear");
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+        // Disable drag-and-drop, right-click, and text selection for the entire document
+        const protectElements = () => {
+          // Disable drag-and-drop for all elements
+          document.querySelectorAll("*").forEach((el) => {
+            el.setAttribute("draggable", "false");
+            el.addEventListener("dragstart", (e) => e.preventDefault());
+            el.addEventListener("drop", (e) => e.preventDefault());
+          });
+
+          // Disable right-click globally
+          document.addEventListener("contextmenu", (e) => e.preventDefault());
+
+          // Disable text selection for the entire body
+          document.body.style.userSelect = "none";
+          document.body.style.webkitUserSelect = "none";
+
+          // Disable right-click on links
+          document.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("contextmenu", (e) => e.preventDefault());
+          });
+        };
+
+        protectElements();
+
+        // Prevent keyboard shortcuts for saving, printing, dev tools, etc.
+        document.addEventListener("keydown", function (e) {
+          const key = e.key.toLowerCase();
+          if (
+            (e.ctrlKey && ["s", "p", "u"].includes(key)) ||
+            (e.ctrlKey && e.shiftKey && ["i", "j", "c"].includes(key)) ||
+            e.key === "F12"
+          ) {
+            e.preventDefault();
+          }
+        });
+
+        // Hide broken images (optional) - this removes the image if it fails to load
+        document.querySelectorAll("img").forEach((img) => {
+          img.addEventListener("error", () => {
+            img.style.display = "none";
+          });
+        });
+
+        // Clear image state cache
+        window.addEventListener("beforeunload", () => {
+          document.querySelectorAll("img").forEach((img) => {
+            localStorage.removeItem("img_" + img.src);
+          });
+        });
+
+        // Protect same-origin iframes (to disable drag and right-click inside iframe content)
+        document.querySelectorAll("iframe").forEach((iframe) => {
+          iframe.setAttribute("draggable", "false");
+          iframe.addEventListener("dragstart", (e) => e.preventDefault());
+
+          iframe.addEventListener("load", () => {
+            try {
+              // Only works for same-origin iframe
+              const iframeDoc =
+                iframe.contentDocument || iframe.contentWindow.document;
+
+              // Disable drag and right-click in iframe content
+              iframeDoc.querySelectorAll("*").forEach((el) => {
+                el.setAttribute("draggable", "false");
+                el.addEventListener("dragstart", (e) => e.preventDefault());
+                el.addEventListener("drop", (e) => e.preventDefault());
+              });
+
+              iframeDoc.body.style.userSelect = "none";
+              iframeDoc.body.style.webkitUserSelect = "none";
+
+              iframeDoc.addEventListener("contextmenu", (e) =>
+                e.preventDefault()
+              );
+            } catch (err) {
+              // If the iframe is cross-origin, we can't access it
+              console.warn(
+                "Cannot access iframe contents due to cross-origin policy."
+              );
+            }
+          });
+        });
+      });
+    </script>
+
+    <script>
+      // Dropdown menu toggle
+      document.querySelector(".dropbtn").addEventListener("click", function () {
+        const dropdownContent = document.querySelector(".dropdown-content");
+        dropdownContent.style.display =
+          dropdownContent.style.display === "block" ? "none" : "block";
+      });
+
+      // Close dropdown if clicked outside
+      window.addEventListener("click", function (e) {
+        if (!e.target.closest(".dropdown")) {
+          document.querySelector(".dropdown-content").style.display = "none";
+        }
+      });
+    </script>
 
     <script>
       const audioStream = new Audio("https://stream.zeno.fm/eownpnzhffvtv");
       const playPauseBtn = document.getElementById("playPauseBtn");
+      const liveTimer = document.getElementById("liveTimer");
       const liveStatus = document.getElementById("liveStatus");
+      const liveDot = liveStatus.querySelector(".dot");
+      const radioPlayer = document.getElementById("radioPlayer");
+
       let isPlaying = false;
+      let seconds = 0;
+      let interval = null;
 
-      audioStream.addEventListener("playing", () => {
-        liveStatus.textContent = "Live Now";
-        liveStatus.style.color = "#00ff80";
-        playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-      });
-
-      audioStream.addEventListener("pause", () => {
-        liveStatus.textContent = "( Paused )";
-        liveStatus.style.color = "#ccc";
-        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-        isPlaying = false;
-      });
-
-      audioStream.addEventListener("waiting", () => {
-        liveStatus.textContent = "Buffering...";
-      });
+      function updateTimer() {
+        seconds++;
+        const mins = String(Math.floor(seconds / 60)).padStart(2, "0");
+        const secs = String(seconds % 60).padStart(2, "0");
+        liveTimer.textContent = `${mins}:${secs}`;
+      }
 
       function toggleRadio() {
         if (isPlaying) {
           audioStream.pause();
+          clearInterval(interval);
+          seconds = 0;
+          liveTimer.textContent = "00:00";
+          playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+          liveStatus.innerHTML =
+            '<div class="dot" style="display: none;"></div>Radio Broadcast';
+          isPlaying = false;
         } else {
-          audioStream.play();
+          liveStatus.innerHTML =
+            '<div class="dot" style="display: none;"></div>Buffering...';
+          audioStream.load();
+          audioStream.play().catch(() => {
+            // If play fails, assume offline
+            radioPlayer.style.display = "none";
+            setTimeout(() => location.reload(), 3000); // Try reconnecting
+          });
         }
-        isPlaying = !isPlaying;
       }
 
-      document.getElementById("currentYear").textContent =
-        new Date().getFullYear();
+      audioStream.addEventListener("canplay", () => {
+        // Stream is ready, auto-show player
+        radioPlayer.style.display = "block";
+        audioStream.play();
+      });
+
+      audioStream.addEventListener("playing", () => {
+        // Stream started playing
+        if (!isPlaying) {
+          interval = setInterval(updateTimer, 1000);
+          isPlaying = true;
+        }
+        liveStatus.innerHTML =
+          '<div class="dot" style="display:inline-block;"></div>Live Radio Broadcast';
+        playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        radioPlayer.style.display = "block";
+      });
+
+      audioStream.addEventListener("waiting", () => {
+        // Buffering
+        liveStatus.innerHTML =
+          '<div class="dot" style="display:none;"></div>Buffering...';
+        clearInterval(interval);
+      });
+
+      audioStream.addEventListener("pause", () => {
+        clearInterval(interval);
+        liveStatus.innerHTML =
+          '<div class="dot" style="display:none;"></div>Radio Broadcast';
+        isPlaying = false;
+      });
+
+      audioStream.addEventListener("error", () => {
+        // Stream offline
+        radioPlayer.style.display = "none";
+        setTimeout(() => location.reload(), 5000); // Retry after 5s
+      });
+
+      // Auto check if stream comes back online every 10 seconds
+      setInterval(() => {
+        fetch("https://stream.zeno.fm/eownpnzhffvtv")
+          .then((res) => {
+            if (res.ok && radioPlayer.style.display === "none") {
+              location.reload(); // Stream is back online, reload to restore
+            }
+          })
+          .catch(() => {
+            // Still offline, do nothing
+          });
+      }, 10000);
     </script>
   </body>
 </html>
