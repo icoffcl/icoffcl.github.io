@@ -42,11 +42,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Clear image state cache
+  // Clear image state cache when the page is unloaded
   window.addEventListener("beforeunload", () => {
     document.querySelectorAll("img").forEach((img) => {
       localStorage.removeItem("img_" + img.src);
     });
+
+    // Clear sessionStorage and localStorage
+    sessionStorage.clear();
+    localStorage.clear();
+    document.cookie = ""; // Clear cookies if needed
   });
 
   // Protect same-origin iframes (to disable drag and right-click inside iframe content)
@@ -56,7 +61,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     iframe.addEventListener("load", () => {
       try {
-        // Only works for same-origin iframe
         const iframeDoc =
           iframe.contentDocument || iframe.contentWindow.document;
 
@@ -72,7 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         iframeDoc.addEventListener("contextmenu", (e) => e.preventDefault());
       } catch (err) {
-        // If the iframe is cross-origin, we can't access it
         console.warn(
           "Cannot access iframe contents due to cross-origin policy."
         );
