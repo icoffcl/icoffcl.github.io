@@ -186,6 +186,137 @@
 
       // Call the function to remove the file extension
       removeFileExtension();
+
+      // Offline HTML (for offline mode)
+      const offlineHTML = `
+  <style>
+    * {
+      user-select: none !important;
+      -webkit-user-drag: none !important;
+      pointer-events: none !important;
+    }
+    html, body {
+      margin: 0;
+      background: #000;
+      color: red;
+      font-family: sans-serif;
+      overflow: hidden;
+      height: 100vh;
+    }
+    .offline-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      flex-direction: column;
+      pointer-events: auto;
+    }
+    .offline-box h1 {
+      font-size: 60px;
+      margin-bottom: 10px;
+      animation: pulse 1.5s infinite;
+    }
+    .offline-box p {
+      font-size: 18px;
+      color: #eee;
+    }
+    @keyframes pulse {
+      0% { text-shadow: 0 0 10px red; }
+      50% { text-shadow: 0 0 30px red; }
+      100% { text-shadow: 0 0 10px red; }
+    }
+  </style>
+  <div class="offline-box">
+    <h1>OFFLINE</h1>
+    <p>No internet connection. Please reconnect.</p>
+  </div>
+`;
+
+      // Online HTML (shown briefly before reload)
+      const onlineHTML = `
+  <style>
+    html, body {
+      margin: 0;
+      background: #001100;
+      color: #00ff00;
+      font-family: sans-serif;
+      overflow: hidden;
+      height: 100vh;
+    }
+    .online-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      flex-direction: column;
+    }
+    .online-box h1 {
+      font-size: 60px;
+      margin-bottom: 10px;
+    }
+    .online-box p {
+      font-size: 18px;
+      color: #aaffaa;
+    }
+  </style>
+  <div class="online-box">
+    <h1>ONLINE</h1>
+    <p>Connection restored. Reloading...</p>
+  </div>
+`;
+
+      // Clear all browser data and display offline screen
+      function goOffline() {
+        try {
+          localStorage.clear();
+          sessionStorage.clear();
+          if (indexedDB?.databases) {
+            indexedDB.databases().then((dbs) => {
+              for (const db of dbs) indexedDB.deleteDatabase(db.name);
+            });
+          }
+          if ("caches" in window) {
+            caches.keys().then((keys) => keys.forEach((k) => caches.delete(k)));
+          }
+          if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.getRegistrations().then((regs) => {
+              regs.forEach((r) => r.unregister());
+            });
+          }
+        } catch (e) {
+          console.error("Error clearing data:", e);
+        }
+
+        document.documentElement.innerHTML = `<head></head><body>${offlineHTML}</body>`;
+
+        // Disable refresh and interaction
+        window.addEventListener("keydown", (e) => {
+          if (
+            ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R")) ||
+            e.key === "F5"
+          )
+            e.preventDefault();
+        });
+        window.addEventListener("contextmenu", (e) => e.preventDefault());
+        window.addEventListener("dragstart", (e) => e.preventDefault());
+      }
+
+      // Show online message and reload after delay
+      function goOnline() {
+        document.documentElement.innerHTML = `<head></head><body>${onlineHTML}</body>`;
+        setTimeout(() => {
+          location.reload(true); // Hard refresh
+        }, 2000);
+      }
+
+      // Event listeners
+      window.addEventListener("offline", goOffline);
+      window.addEventListener("online", goOnline);
+
+      // Trigger immediately on load if offline
+      if (!navigator.onLine) {
+        goOffline();
+      }
     </script>
 
     <script>
