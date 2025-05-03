@@ -1,87 +1,72 @@
-document.addEventListener("DOMContentLoaded", function () {
-  // Disable drag-and-drop, right-click, and text selection for the entire document
-  const protectElements = () => {
-    // Disable drag-and-drop for all elements
-    document.querySelectorAll("*").forEach((el) => {
-      el.setAttribute("draggable", "false");
-      el.addEventListener("dragstart", (e) => e.preventDefault());
-      el.addEventListener("drop", (e) => e.preventDefault());
-    });
+// Utility: Encrypt-like garbage text
+function getFakeText(length) {
+  const chars = "█▓▒░<>[]{}()$#@&*!%+=~^";
+  let output = "";
+  for (let i = 0; i < length; i++) {
+    output += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return output;
+}
 
-    // Disable right-click globally
-    document.addEventListener("contextmenu", (e) => e.preventDefault());
+// Offline: corrupt UI and hide content
+function goOfflineMode() {
+  document.body.classList.add("broken-mode");
 
-    // Disable text selection for the entire body
-    document.body.style.userSelect = "none";
-    document.body.style.webkitUserSelect = "none";
-
-    // Disable right-click on links
-    document.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("contextmenu", (e) => e.preventDefault());
-    });
-  };
-
-  protectElements();
-
-  // Prevent keyboard shortcuts for saving, printing, dev tools, etc.
-  document.addEventListener("keydown", function (e) {
-    const key = e.key.toLowerCase();
-    if (
-      (e.ctrlKey && ["s", "p", "u"].includes(key)) ||
-      (e.ctrlKey && e.shiftKey && ["i", "j", "c"].includes(key)) ||
-      e.key === "F12"
-    ) {
-      e.preventDefault();
-    }
-  });
-
-  // Hide broken images (optional) - this removes the image if it fails to load
   document.querySelectorAll("img").forEach((img) => {
-    img.addEventListener("error", () => {
-      img.style.display = "none";
-    });
+    img.style.display = "none";
   });
 
-  // Clear image state cache when the page is unloaded
-  window.addEventListener("beforeunload", () => {
-    document.querySelectorAll("img").forEach((img) => {
-      localStorage.removeItem("img_" + img.src);
-    });
+  const title = document.getElementById("main-title");
+  const text = document.getElementById("main-text");
 
-    // Clear sessionStorage and localStorage
-    sessionStorage.clear();
-    localStorage.clear();
-    document.cookie = ""; // Clear cookies if needed
-  });
+  title.textContent = getFakeText(20);
+  text.textContent = getFakeText(100);
+}
 
-  // Protect same-origin iframes (to disable drag and right-click inside iframe content)
-  document.querySelectorAll("iframe").forEach((iframe) => {
-    iframe.setAttribute("draggable", "false");
-    iframe.addEventListener("dragstart", (e) => e.preventDefault());
+// Online: reload to recover real content
+function goOnlineMode() {
+  location.reload(); // Full page refresh to restore everything
+}
 
-    iframe.addEventListener("load", () => {
-      try {
-        const iframeDoc =
-          iframe.contentDocument || iframe.contentWindow.document;
+// Network status listeners
+window.addEventListener("offline", goOfflineMode);
+window.addEventListener("online", goOnlineMode);
 
-        // Disable drag and right-click in iframe content
-        iframeDoc.querySelectorAll("*").forEach((el) => {
-          el.setAttribute("draggable", "false");
-          el.addEventListener("dragstart", (e) => e.preventDefault());
-          el.addEventListener("drop", (e) => e.preventDefault());
-        });
+// Disable dev tools shortcuts
+document.addEventListener("keydown", function (e) {
+  const key = e.key.toLowerCase();
+  if (
+    (e.ctrlKey && ["s", "p", "u"].includes(key)) ||
+    (e.ctrlKey && e.shiftKey && ["i", "j", "c"].includes(key)) ||
+    e.key === "F12"
+  ) {
+    e.preventDefault();
+  }
+});
 
-        iframeDoc.body.style.userSelect = "none";
-        iframeDoc.body.style.webkitUserSelect = "none";
+// Disable drag, right-click, text select
+document.addEventListener("contextmenu", (e) => e.preventDefault());
+document.body.style.userSelect = "none";
+document.querySelectorAll("*").forEach((el) => {
+  el.setAttribute("draggable", "false");
+  el.addEventListener("dragstart", (e) => e.preventDefault());
+  el.addEventListener("drop", (e) => e.preventDefault());
+});
 
-        iframeDoc.addEventListener("contextmenu", (e) => e.preventDefault());
-      } catch (err) {
-        console.warn(
-          "Cannot access iframe contents due to cross-origin policy."
-        );
-      }
-    });
+// Clear all storage on unload
+window.addEventListener("beforeunload", () => {
+  localStorage.clear();
+  sessionStorage.clear();
+  document.cookie.split(";").forEach(function (c) {
+    document.cookie = c
+      .replace(/^ +/, "")
+      .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
   });
 });
+
+// Initial offline check on page load
+if (!navigator.onLine) {
+  goOfflineMode();
+}
 
 document.getElementById("currentYear").textContent = new Date().getFullYear();
